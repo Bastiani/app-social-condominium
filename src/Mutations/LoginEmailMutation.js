@@ -10,22 +10,24 @@ const LoginEmailMutation = graphql`
   }
 `;
 
-function loginEmail(environment: object, email: string, password: string) {
+function loginEmailMutation(environment, email, password) {
   const variables = {
     input: {
       email,
       password,
     },
   };
-  commitMutation(environment, {
-    mutation: LoginEmailMutation,
-    variables,
-    onCompleted: (response, errors) => {
-      console.log('Response received from server.');
-      console.log(response, errors);
-    },
-    onError: err => console.error(err),
+  return new Promise((resolve, reject) => {
+    commitMutation(environment, {
+      mutation: LoginEmailMutation,
+      variables,
+      onCompleted: (response, errors) => {
+        console.log(response.LoginEmail.token);
+        resolve(response.LoginEmail.token);
+      },
+      onError: err => reject(err),
+    });
   });
 }
 
-export default loginEmail;
+export default loginEmailMutation;
