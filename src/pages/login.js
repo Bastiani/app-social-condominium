@@ -33,13 +33,17 @@ class Login extends React.Component {
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
             title="Entrar"
-            onPress={() => {
-              onSignIn(this.state).then((res) => {
+            onPress={async () => {
+              try {
+                const res = await onSignIn(this.state);
                 console.log(`onPress ====== ${res}`);
-                res !== 'error'
+                res.startsWith('JWT')
                   ? this.props.navigation.navigate('SignedIn')
                   : this.props.navigation.navigate('SignedOut');
-              });
+              } catch (err) {
+                console.log(`onPress catch ====== ${err}`);
+                this.props.navigation.navigate('SignedOut');
+              }
             }}
           />
         </Card>
