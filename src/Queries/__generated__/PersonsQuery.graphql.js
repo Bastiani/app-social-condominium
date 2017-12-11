@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d741d4dc6bddcf6d5579b6591c606737
+ * @relayHash 762d084440fa61ae6061cd4f28fbd3b1
  */
 
 /* eslint-disable */
@@ -10,7 +10,7 @@
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
 export type PersonsQueryResponse = {|
-  +persons: ?{| |};
+  +persons: ?$ReadOnlyArray<?{| |}>;
 |};
 */
 
@@ -20,12 +20,12 @@ query PersonsQuery(
   $name: String!
 ) {
   persons(name: $name) {
-    ...PersonInfo_person
+    ...PersonInfo_persons
     id
   }
 }
 
-fragment PersonInfo_person on Person {
+fragment PersonInfo_persons on Person {
   _id
   name
   email
@@ -61,11 +61,11 @@ const batch /*: ConcreteBatch*/ = {
         ],
         "concreteType": "Person",
         "name": "persons",
-        "plural": false,
+        "plural": true,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "PersonInfo_person",
+            "name": "PersonInfo_persons",
             "args": null
           }
         ],
@@ -104,56 +104,62 @@ const batch /*: ConcreteBatch*/ = {
         ],
         "concreteType": "Person",
         "name": "persons",
-        "plural": false,
+        "plural": true,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "_id",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "name",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "email",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "telephone",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "address",
-            "storageKey": null
-          },
           {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
             "name": "id",
             "storageKey": null
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "Person",
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "_id",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "name",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "email",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "telephone",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "address",
+                "storageKey": null
+              }
+            ]
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query PersonsQuery(\n  $name: String!\n) {\n  persons(name: $name) {\n    ...PersonInfo_person\n    id\n  }\n}\n\nfragment PersonInfo_person on Person {\n  _id\n  name\n  email\n  telephone\n  address\n}\n"
+  "text": "query PersonsQuery(\n  $name: String!\n) {\n  persons(name: $name) {\n    ...PersonInfo_persons\n    id\n  }\n}\n\nfragment PersonInfo_persons on Person {\n  _id\n  name\n  email\n  telephone\n  address\n}\n"
 };
 
 module.exports = batch;

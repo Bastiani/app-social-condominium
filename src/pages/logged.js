@@ -7,7 +7,7 @@ import PersonsQuery from '../Queries/PersonsQuery';
 
 export default ({ navigation }) => (
   <View style={{ paddingVertical: 20 }}>
-    <Card title="John Doe">
+    <Card title="Social Condominium">
       <PersonsQuery />
       <Button
         backgroundColor="#03A9F4"
