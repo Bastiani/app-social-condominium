@@ -12,7 +12,12 @@ function fetchQuery(operation, variables, cacheConfig, uploadables) {
       query: operation.text, // GraphQL text from input
       variables,
     }),
-  }).then(response => response.json());
+  })
+    .then(response => response.json())
+    .catch((err) => {
+      console.log(`erro fetch ====== ${err}`);
+      return 'error';
+    });
 }
 
 // Create a network layer from the fetch function
