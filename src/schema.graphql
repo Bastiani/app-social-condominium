@@ -60,7 +60,7 @@ type Query implements Node {
     last: Int
     search: String
   ): UserConnection
-  persons(name: String, email: String): Person
+  persons(name: String, email: String): [Person]
 }
 
 input RegisterEmailInput {
@@ -112,4 +112,17 @@ type Person implements Node {
   telephone: String
   email: String
   address: String
+}
+
+# A connection to a list of items.
+type PersonConnection {
+  # A list of edges.
+  edges: [PersonEdge]
+  count: Int
+}
+
+# An edge in a connection.
+type PersonEdge {
+  # The item at the end of the edge
+  node: Person
 }
