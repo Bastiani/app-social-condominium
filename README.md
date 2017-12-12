@@ -21,3 +21,9 @@ npm run relay
 react-native start
 ```
 ### And now open app in emulator or device connected in usb
+
+### Links
+[](https://www.toptal.com/api-development/graphql-vs-rest-tutorial)
+[](https://facebook.github.io/relay/docs/en/relay-modern.html)
+[](http://graphql.org/learn/)
+[](https://www.howtographql.com/)
