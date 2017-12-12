@@ -61,6 +61,7 @@ type Query implements Node {
     search: String
   ): UserConnection
   persons(name: String, email: String): [Person]
+  allPersons: [Person]
 }
 
 input RegisterEmailInput {

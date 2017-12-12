@@ -3,12 +3,12 @@ import { View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 
 import { onSignOut } from '../services/auth';
-import PersonsQuery from '../Queries/PersonsQuery';
+import AllPersonsQuery from '../Queries/AllPersonsQuery';
 
 export default ({ navigation }) => (
   <View style={{ paddingVertical: 20 }}>
     <Card title="Social Condominium">
-      <PersonsQuery />
+      <AllPersonsQuery />
       <Button
         backgroundColor="#03A9F4"
         title="Sair"

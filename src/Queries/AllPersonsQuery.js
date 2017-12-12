@@ -10,20 +10,18 @@ const PersonsQuery = () => (
     <QueryRenderer
       environment={environment}
       query={graphql`
-        query PersonsQuery($name: String!) {
-          persons(name: $name) {
+        query AllPersonsQuery {
+          allPersons {
             ...PersonInfo_persons
           }
         }
       `}
-      variables={{
-        name: 'R',
-      }}
+      variables={{}}
       render={({ error, props }) => {
         if (error) {
           return <Text>{error.message}</Text>;
         } else if (props) {
-          return <PersonInfo persons={props.persons} />;
+          return <PersonInfo persons={props.allPersons} />;
         }
         return <Text>Loading</Text>;
       }}

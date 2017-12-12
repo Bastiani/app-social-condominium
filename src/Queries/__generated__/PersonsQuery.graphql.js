@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 762d084440fa61ae6061cd4f28fbd3b1
+ * @relayHash 932661a27248f03e05b88969fd66c75f
  */
 
 /* eslint-disable */
@@ -26,6 +26,7 @@ query PersonsQuery(
 }
 
 fragment PersonInfo_persons on Person {
+  id
   _id
   name
   email
@@ -159,7 +160,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PersonsQuery(\n  $name: String!\n) {\n  persons(name: $name) {\n    ...PersonInfo_persons\n    id\n  }\n}\n\nfragment PersonInfo_persons on Person {\n  _id\n  name\n  email\n  telephone\n  address\n}\n"
+  "text": "query PersonsQuery(\n  $name: String!\n) {\n  persons(name: $name) {\n    ...PersonInfo_persons\n    id\n  }\n}\n\nfragment PersonInfo_persons on Person {\n  id\n  _id\n  name\n  email\n  telephone\n  address\n}\n"
 };
 
 module.exports = batch;

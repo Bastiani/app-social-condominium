@@ -1,22 +1,27 @@
 import React from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 
-import { Text, View } from 'react-native';
+import { FlatList, TouchableHighlight, Text, View } from 'react-native';
 
-const PersonInfo = ({ persons }) => (
-  <View>{persons.map(person => <Text>{person.name}</Text>)}</View>
+const renderPersons = ({ item }) => (
+  <TouchableHighlight underlayColor="whitesmoke">
+    <View>
+      <Text>{item.name}</Text>
+    </View>
+  </TouchableHighlight>
 );
 
-/* const PersonInfo = ({ persons }) => (
+const PersonInfo = props => (
   <View>
-    <Text>{persons.name}</Text>
+    <FlatList data={props.persons} renderItem={renderPersons} keyExtractor={item => item.id} />
   </View>
-); */
+);
 
 export default createFragmentContainer(
   PersonInfo,
   graphql`
     fragment PersonInfo_persons on Person @relay(plural: true) {
+      id
       _id
       name
       email
