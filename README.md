@@ -23,7 +23,7 @@ react-native start
 ### And now open app in emulator or device connected in usb
 
 ### Links
-[](https://www.toptal.com/api-development/graphql-vs-rest-tutorial)
-[](https://facebook.github.io/relay/docs/en/relay-modern.html)
-[](http://graphql.org/learn/)
-[](https://www.howtographql.com/)
+* [graphql-vs-rest-tutorial](https://www.toptal.com/api-development/graphql-vs-rest-tutorial)
+* [relay-modern](https://facebook.github.io/relay/docs/en/relay-modern.html)
+* [graphql](http://graphql.org/learn/)
+* [howtographql](https://www.howtographql.com/)
