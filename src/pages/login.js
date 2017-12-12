@@ -19,20 +19,20 @@ class Login extends React.Component {
           <FormInput
             onChangeText={email => this.setState({ email })}
             value={this.state.email}
-            placeholder="Digite seu e-mail"
+            placeholder="Type your e-mail"
           />
-          <FormLabel>Senha</FormLabel>
+          <FormLabel>Password</FormLabel>
           <FormInput
             onChangeText={password => this.setState({ password })}
             value={this.state.password}
             secureTextEntry
-            placeholder="Digite sua senha"
+            placeholder="Type your password"
           />
 
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
-            title="Entrar"
+            title="Log in"
             onPress={async () => {
               try {
                 const res = await onSignIn(this.state);
